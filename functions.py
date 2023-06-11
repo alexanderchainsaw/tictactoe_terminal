@@ -3,11 +3,13 @@ from colorama import Fore, Style
 x = f'{Fore.RED}X{Style.RESET_ALL}'
 o = f'{Fore.GREEN}O{Style.RESET_ALL}'
 
+
 def won(board):
     wins = [board[:5:2], board[6:11:2], board[12::2], board[::6], board[2::6], board[4::6], board[::8], board[4:13:4]]
     if any(True for x in wins if len(set(x)) == 1):
         return True
 
+    
 def board_display(board, draw=False):
     if not draw:
         print(f'{"-" * 37}\n'
