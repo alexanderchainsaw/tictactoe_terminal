@@ -1,6 +1,6 @@
 # <p align="center">Simple TicTacToe in the terminal</p>
 ![](https://github.com/alexanderchainsaw/demo_repo/blob/main/demo.gif)  
-Simple tictactoe with score tracking and enumerated cells
+Simple tictactoe with score tracking and enumerated cells.  
 Checking for game completion is done by slicing the board 
 and converting each slice into a set()
 
