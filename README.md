@@ -6,3 +6,4 @@ Checking for game completion is done by slicing the board
 and converting each slice into a set(). If after conversion the length of a
 slice == 1, the game is over
  
+     requirements: colorama==0.4.6
