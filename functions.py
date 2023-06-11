@@ -9,7 +9,7 @@ def won(board):
     if any(True for x in wins if len(set(x)) == 1):
         return True
 
-    
+
 def board_display(board, draw=False):
     if not draw:
         print(f'{"-" * 37}\n'
