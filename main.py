@@ -2,7 +2,7 @@ from colorama import Fore, Style
 from random import getrandbits
 from time import sleep
 
-from functions import x, o, won, board_display, score_display, first_move, game_over
+from functions import won, board_display, score_display, first_move, game_over
 
 
 def main():
@@ -97,5 +97,6 @@ def main():
             board_display(board)
             flag = True
 
+            
 if __name__ == '__main__':
     main()
