@@ -20,7 +20,7 @@ def main():
     while True:
         if flag:
             x_move = input(f'Place X at the position({Fore.RED}{available_moves}{Style.RESET_ALL}): ').lower()
-            if x_move not in available_moves:
+            if x_move not in available_moves or len(x_move) > 1:
                 print('Invalid position. Try again.')
                 continue
             board = board.replace(x_move, 'X')
@@ -59,7 +59,7 @@ def main():
             flag = False
         else:
             o_move = input(f'Place O at the position({Fore.GREEN}{available_moves}{Style.RESET_ALL}): ').lower()
-            if o_move not in available_moves:
+            if o_move not in available_moves or len(o_move) > 1:
                 print('Invalid position. Try again.')
                 continue
             board = board.replace(o_move, 'O')

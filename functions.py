@@ -6,7 +6,7 @@ o = f'{Fore.GREEN}O{Style.RESET_ALL}'
 
 def won(board):
     wins = [board[:5:2], board[6:11:2], board[12::2], board[::6], board[2::6], board[4::6], board[::8], board[4:13:4]]
-    if any(True for x in wins if len(set(x)) == 1):
+    if any(True for item in wins if len(set(item)) == 1):
         return True
 
 
@@ -46,13 +46,13 @@ def first_move(flag):
 def game_over(winner):
     if winner == 'x':
         print(f'{"-"*37}\n'
-                      f'{Fore.RED}{"X Victory!" : ^37}{Style.RESET_ALL}\n'
-                      f'{"-"*37}')
+              f'{Fore.RED}{"X Victory!" : ^37}{Style.RESET_ALL}\n'
+              f'{"-"*37}')
     elif winner == 'o':
         print(f'{"-"*37}\n'
-                      f'{Fore.GREEN}{"O Victory!" : ^37}{Style.RESET_ALL}\n'
-                      f'{"-"*37}')
+              f'{Fore.GREEN}{"O Victory!" : ^37}{Style.RESET_ALL}\n'
+              f'{"-"*37}')
     else:
         print(f'{"-" * 37}\n'
-                      f'{Fore.LIGHTYELLOW_EX}{"Draw!" : ^37}{Style.RESET_ALL}\n'
-                      f'{"-" * 37}')
+              f'{Fore.LIGHTYELLOW_EX}{"Draw!" : ^37}{Style.RESET_ALL}\n'
+              f'{"-" * 37}')
