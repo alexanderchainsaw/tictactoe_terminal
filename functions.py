@@ -1,7 +1,12 @@
 from colorama import Fore, Style
 
-x = f'{Fore.RED}X{Style.RESET_ALL}'
-o = f'{Fore.GREEN}O{Style.RESET_ALL}'
+yellow = Fore.LIGHTYELLOW_EX
+green = Fore.GREEN
+red = Fore.RED
+reset = Style.RESET_ALL
+
+x = f'{red}X{reset}'
+o = f'{green}O{reset}'
 
 
 def won(board):
@@ -19,9 +24,9 @@ def board_display(board, draw=False):
               f'{"-" * 37}')
     else:
         print(f'{"-" * 37}\n'
-              f'{" " * 15}{board.replace("X",f"{Fore.LIGHTYELLOW_EX}X{Style.RESET_ALL}").replace("O", f"{Fore.LIGHTYELLOW_EX}O{Style.RESET_ALL}").split()[0]}\n'
-              f'{" " * 15}{board.replace("X",f"{Fore.LIGHTYELLOW_EX}X{Style.RESET_ALL}").replace("O", f"{Fore.LIGHTYELLOW_EX}O{Style.RESET_ALL}").split()[1]}\n'
-              f'{" " * 15}{board.replace("X",f"{Fore.LIGHTYELLOW_EX}X{Style.RESET_ALL}").replace("O", f"{Fore.LIGHTYELLOW_EX}O{Style.RESET_ALL}").split()[2]}\n'
+              f'{" " * 15}{board.replace("X",f"{yellow}X{reset}").replace("O", f"{yellow}O{reset}").split()[0]}\n'
+              f'{" " * 15}{board.replace("X",f"{yellow}X{reset}").replace("O", f"{yellow}O{reset}").split()[1]}\n'
+              f'{" " * 15}{board.replace("X",f"{yellow}X{reset}").replace("O", f"{yellow}O{reset}").split()[2]}\n'
               f'{"-" * 37}')
 
 
@@ -35,24 +40,24 @@ def score_display(x_wins, o_wins):
 def first_move(flag):
     if flag:
         print(f'{"-" * 37}\n'
-              f'{Fore.RED}{"First move belongs to X!" : ^37}{Style.RESET_ALL}\n'
+              f'{red}{"First move belongs to X!" : ^37}{reset}\n'
               f'{"-" * 37}')
     else:
         print(f'{"-" * 37}\n'
-              f'{Fore.GREEN}{"First move belongs to O!" : ^37}{Style.RESET_ALL}\n'
+              f'{green}{"First move belongs to O!" : ^37}{reset}\n'
               f'{"-" * 37}')
 
 
 def game_over(winner):
     if winner == 'x':
         print(f'{"-"*37}\n'
-              f'{Fore.RED}{"X Victory!" : ^37}{Style.RESET_ALL}\n'
+              f'{red}{"X Victory!" : ^37}{reset}\n'
               f'{"-"*37}')
     elif winner == 'o':
         print(f'{"-"*37}\n'
-              f'{Fore.GREEN}{"O Victory!" : ^37}{Style.RESET_ALL}\n'
+              f'{green}{"O Victory!" : ^37}{reset}\n'
               f'{"-"*37}')
     else:
         print(f'{"-" * 37}\n'
-              f'{Fore.LIGHTYELLOW_EX}{"Draw!" : ^37}{Style.RESET_ALL}\n'
+              f'{yellow}{"Draw!" : ^37}{reset}\n'
               f'{"-" * 37}')
