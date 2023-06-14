@@ -4,6 +4,11 @@ from time import sleep
 
 from functions import won, board_display, score_display, first_move, game_over
 
+yellow = Fore.LIGHTYELLOW_EX
+green = Fore.GREEN
+red = Fore.RED
+reset = Style.RESET_ALL
+
 
 def main():
     board = '1-2-3\n4-5-6\n7-8-9'
@@ -19,7 +24,7 @@ def main():
 
     while True:
         if flag:
-            x_move = input(f'Place X at the position({Fore.RED}{available_moves}{Style.RESET_ALL}): ').lower()
+            x_move = input(f'Place X at the position({red}{available_moves}{reset}): ').lower()
             if x_move not in available_moves or len(x_move) > 1:
                 print('Invalid position. Try again.')
                 continue
@@ -58,7 +63,7 @@ def main():
             board_display(board)
             flag = False
         else:
-            o_move = input(f'Place O at the position({Fore.GREEN}{available_moves}{Style.RESET_ALL}): ').lower()
+            o_move = input(f'Place O at the position({green}{available_moves}{reset}): ').lower()
             if o_move not in available_moves or len(o_move) > 1:
                 print('Invalid position. Try again.')
                 continue
