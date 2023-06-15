@@ -32,9 +32,11 @@ def main():
             moves += 1
             available_moves = available_moves.replace(x_move, '')
             if won(board):
-                moves = 0
                 board_display(board)
                 game_over('x')
+                if moves == 9:
+                    print(f'{Fore.BLUE}{"DOUBLE WIN!!!" : ^37}{Style.RESET_ALL}')
+                    x_victories += 1
                 x_victories += 1
                 score_display(x_victories, o_victories)
                 if input("Play again?(Y/N): ").lower() == 'y':
@@ -42,6 +44,7 @@ def main():
                     board_display(board)
                     available_moves = '123456789'
                     flag = False
+                    moves = 0
                     continue
                 else:
                     break
@@ -71,15 +74,18 @@ def main():
             moves += 1
             available_moves = available_moves.replace(o_move, '')
             if won(board):
-                moves = 0
                 board_display(board)
                 game_over('o')
+                if moves == 9:
+                    print(f'{Fore.BLUE}{"DOUBLE WIN!!!" : ^37}{Style.RESET_ALL}')
+                    o_victories += 1
                 o_victories += 1
                 score_display(x_victories, o_victories)
                 if input("Play again?(Y/N): ").lower() == 'y':
                     board = '1-2-3\n4-5-6\n7-8-9'
                     board_display(board)
                     available_moves = '123456789'
+                    moves = 0
                     flag = True
                     continue
                 else:
