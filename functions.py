@@ -10,12 +10,17 @@ o = f'{green}O{reset}'
 
 
 def won(board):
-    wins = [board[:5:2], board[6:11:2], board[12::2], board[::6], board[2::6], board[4::6], board[::8], board[4:13:4]]
+    """ Determine whether the current board contains a win
+        by converting winning board slices into a set """
+    wins = [board[:5:2], board[6:11:2], board[12::2], board[::6],
+            board[2::6], board[4::6], board[::8], board[4:13:4]]
     if any(True for item in wins if len(set(item)) == 1):
         return True
 
 
 def board_display(board, draw=False):
+    """ Paint X and O elements with their colors by replacing string X's and O's
+        with painted objects, if there is a draw - paint it yellow """
     if not draw:
         print(f'{"-" * 37}\n'
               f'{" " * 15}{board.replace("X", x).replace("O", o).split()[0]}\n'
@@ -31,13 +36,14 @@ def board_display(board, draw=False):
 
 
 def score_display(x_wins, o_wins):
+    """ Display overall score """
     print(f'{" " * 15}Score:\n'
           f'{" " * 15}{x}: {x_wins}\n'
           f'{" " * 15}{o}: {o_wins}\n'
           f'{"-" * 37}')
 
 
-def first_move(flag):
+def first_move(flag: bool):
     if flag:
         print(f'{"-" * 37}\n'
               f'{red}{"First move belongs to X!" : ^37}{reset}\n'
