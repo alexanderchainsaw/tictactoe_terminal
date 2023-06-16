@@ -11,11 +11,11 @@ o = f'{green}O{reset}'
 
 def won(board):
     """ Determine whether the current board contains a win
-        by converting winning board slices into a set """
+        by converting winning board slices into a set
+        If returned value is 2, then 2 win conditions reached == double win"""
     wins = [board[:5:2], board[6:11:2], board[12::2], board[::6],
             board[2::6], board[4::6], board[::8], board[4:13:4]]
-    if any(True for item in wins if len(set(item)) == 1):
-        return True
+    return sum(1 for item in wins if len(set(item)) == 1)
 
 
 def board_display(board, draw=False):
