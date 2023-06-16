@@ -1,8 +1,10 @@
+import random
 from colorama import Fore, Style
 from random import getrandbits
 from time import sleep
 
-from functions import won, board_display, score_display, first_move, game_over
+from functions import x, o, won, board_display, score_display, first_move, game_over
+from ai_opponent import ai_move
 
 yellow = Fore.LIGHTYELLOW_EX
 green = Fore.GREEN
@@ -11,6 +13,23 @@ reset = Style.RESET_ALL
 
 
 def main():
+    choosing = True
+    while choosing:
+        choice = input("Select mode:\n (1).PvP (2).PvE ")
+        if choice == '1':
+            pve = False
+            choosing = False
+        elif choice == '2':
+            pve = True
+            choosing = False
+        else:
+            print("Invalid input")
+    if pve:
+        ai = random.choice('xo')
+        if ai == 'x':
+            print(f'You are playing as {o}!')
+        else:
+            print(f'You are playing as {x}!')
     board = '1-2-3\n4-5-6\n7-8-9'
     x_victories = 0
     o_victories = 0
@@ -24,10 +43,14 @@ def main():
 
     while True:
         if flag:
-            x_move = input(f'Place X at the position({red}{available_moves}{reset}): ').lower()
-            if x_move not in available_moves or len(x_move) > 1:
-                print('Invalid position. Try again.')
-                continue
+            if ai == 'x':
+                x_move = ai_move(board, available_moves, 'x', 'o')
+                print('AI makes a move!')
+            else:
+                x_move = input(f'Place X at the position({red}{available_moves}{reset}): ').lower()
+                if x_move not in available_moves or len(x_move) > 1:
+                    print('Invalid position. Try again.')
+                    continue
             board = board.replace(x_move, 'X')
             moves += 1
             available_moves = available_moves.replace(x_move, '')
@@ -66,10 +89,14 @@ def main():
             board_display(board)
             flag = False
         else:
-            o_move = input(f'Place O at the position({green}{available_moves}{reset}): ').lower()
-            if o_move not in available_moves or len(o_move) > 1:
-                print('Invalid position. Try again.')
-                continue
+            if ai == 'o':
+                o_move = ai_move(board, available_moves, 'o', 'x')
+                print('AI makes a move!')
+            else:
+                o_move = input(f'Place O at the position({green}{available_moves}{reset}): ').lower()
+                if o_move not in available_moves or len(o_move) > 1:
+                    print('Invalid position. Try again.')
+                    continue
             board = board.replace(o_move, 'O')
             moves += 1
             available_moves = available_moves.replace(o_move, '')
