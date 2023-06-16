@@ -14,10 +14,10 @@ reset = Style.RESET_ALL
 
 def main():
     choosing = True
+    pve = False
     while choosing:
         choice = input("Select mode:\n (1).PvP (2).PvE ")
         if choice == '1':
-            pve = False
             choosing = False
         elif choice == '2':
             pve = True
@@ -30,6 +30,8 @@ def main():
             print(f'You are playing as {o}!')
         else:
             print(f'You are playing as {x}!')
+    else:
+        ai = ''
     board = '1-2-3\n4-5-6\n7-8-9'
     x_victories = 0
     o_victories = 0
@@ -44,7 +46,7 @@ def main():
     while True:
         if flag:
             if ai == 'x':
-                x_move = ai_move(board, available_moves, 'x', 'o')
+                x_move = ai_move(board, available_moves, 'X', 'O')
                 print('AI makes a move!')
             else:
                 x_move = input(f'Place X at the position({red}{available_moves}{reset}): ').lower()
@@ -90,7 +92,7 @@ def main():
             flag = False
         else:
             if ai == 'o':
-                o_move = ai_move(board, available_moves, 'o', 'x')
+                o_move = ai_move(board, available_moves, 'O', 'X')
                 print('AI makes a move!')
             else:
                 o_move = input(f'Place O at the position({green}{available_moves}{reset}): ').lower()
