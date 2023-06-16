@@ -57,7 +57,7 @@ def main():
             if won(board):
                 board_display(board)
                 game_over('x')
-                if moves == 9:
+                if won(board) == 2:
                     print(f'{Fore.BLUE}{"DOUBLE WIN!!!" : ^37}{Style.RESET_ALL}')
                     x_victories += 1
                 x_victories += 1
@@ -103,7 +103,7 @@ def main():
             if won(board):
                 board_display(board)
                 game_over('o')
-                if moves == 9:
+                if won(board) == 2:
                     print(f'{Fore.BLUE}{"DOUBLE WIN!!!" : ^37}{Style.RESET_ALL}')
                     o_victories += 1
                 o_victories += 1
