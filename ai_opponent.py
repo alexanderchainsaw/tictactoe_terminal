@@ -3,7 +3,9 @@ import random
 
 def ai_move(board, moves, playing_as, playing_vs):
     """ Priority in choice of moves:
-        Win > Disrupt enemy win > Random secondary move > Random move from available """
+        Win -> Disrupt enemy win ->
+        -> Random secondary move (cell 5 is the priority) ->
+        -> Random move from available (cell 5 is the priority)"""
     wins = [board[:5:2], board[6:11:2], board[12::2], board[::6],
             board[2::6], board[4::6], board[::8], board[4:13:4]]
     win_moves = ''
@@ -22,6 +24,6 @@ def ai_move(board, moves, playing_as, playing_vs):
     elif secondary_move:
         return '5' if '5' in secondary_move else random.choice(secondary_move)
     else:
-        return random.choice(moves)
+        return '5' if '5' in moves else random.choice(moves)
 
 
