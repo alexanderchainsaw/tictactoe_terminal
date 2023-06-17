@@ -13,8 +13,6 @@ def ai_move(board, moves, playing_as, playing_vs):
             win_move += ''.join(i for i in x if i in '123456789')
         if x.count(playing_vs) == 2:
             break_move += ''.join(i for i in x if i in '123456789')
-    print(win_move)
-    print(break_move)
     if win_move:
         return win_move[0]
     elif break_move:
