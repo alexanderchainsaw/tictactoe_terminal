@@ -34,9 +34,7 @@ def main():
     else:
         ai = ''
     board = '1-2-3\n4-5-6\n7-8-9'
-    x_victories = 0
-    o_victories = 0
-    moves = 0
+    x_victories, o_victories = 0, 0
     available_moves = '123456789'
     flag = bool(getrandbits(1))
     print(f'{"Flipping a coin..." : ^37}')
@@ -55,7 +53,6 @@ def main():
                     print('Invalid position. Try again.')
                     continue
             board = board.replace(x_move, 'X')
-            moves += 1
             available_moves = available_moves.replace(x_move, '')
             if won(board):
                 board_display(board)
@@ -70,11 +67,10 @@ def main():
                     board_display(board)
                     available_moves = '123456789'
                     flag = False
-                    moves = 0
                     continue
                 else:
                     break
-            if moves == 9:
+            if not available_moves and not won(board):
                 board_display(board, draw=True)
                 game_over('draw')
                 x_victories += 0.5
@@ -84,7 +80,6 @@ def main():
                     board = '1-2-3\n4-5-6\n7-8-9'
                     board_display(board)
                     available_moves = '123456789'
-                    moves = 0
                     flag = False
                     continue
                 else:
@@ -101,7 +96,6 @@ def main():
                     print('Invalid position. Try again.')
                     continue
             board = board.replace(o_move, 'O')
-            moves += 1
             available_moves = available_moves.replace(o_move, '')
             if won(board):
                 board_display(board)
@@ -115,12 +109,11 @@ def main():
                     board = '1-2-3\n4-5-6\n7-8-9'
                     board_display(board)
                     available_moves = '123456789'
-                    moves = 0
                     flag = True
                     continue
                 else:
                     break
-            if moves == 9:
+            if not available_moves and not won(board):
                 board_display(board, draw=True)
                 game_over('draw')
                 x_victories += 0.5
@@ -130,7 +123,6 @@ def main():
                     board = '1-2-3\n4-5-6\n7-8-9'
                     board_display(board)
                     available_moves = '123456789'
-                    moves = 0
                     flag = True
                     continue
                 else:
