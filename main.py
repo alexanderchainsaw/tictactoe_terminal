@@ -1,15 +1,10 @@
 import random
-from colorama import Fore, Style
 from random import getrandbits
 from time import sleep
 
-from functions import x, o, won, board_display, score_display, first_move, game_over
+from functions import won, board_display, score_display, first_move, game_over
 from ai_opponent import ai_move
-
-yellow = Fore.LIGHTYELLOW_EX
-green = Fore.GREEN
-red = Fore.RED
-reset = Style.RESET_ALL
+from class_paint import Paint, x, o
 
 
 def main():
@@ -17,7 +12,7 @@ def main():
     pve = False
     while choosing:
         choice = input(f"{'Select mode:' : ^37}\n"
-                       f"{green + '(1)' + reset + '.PvP' + red + '(2)' + reset + '.PvE' : ^55}\n")
+                       f"{Paint('(1)').green() + '.PvP' + Paint('(2)').red() + '.PvE' : ^55}\n")
         if choice == '1':
             choosing = False
         elif choice == '2':
@@ -28,9 +23,9 @@ def main():
     if pve:
         ai = random.choice('xo')
         if ai == 'x':
-            print(f'{"You are playing as " + o + "!" : ^45}')
+            print(f'{"You are playing as " + o.green() + "!" : ^45}')
         else:
-            print(f'{"You are playing as " + x + "!" : ^45}')
+            print(f'{"You are playing as " + x.red() + "!" : ^45}')
     else:
         ai = ''
     board = '1-2-3\n4-5-6\n7-8-9'
@@ -46,9 +41,9 @@ def main():
         if flag:
             if ai == 'x':
                 x_move = ai_move(board, available_moves, 'X', 'O')
-                print(f'{"AI places " + x + " at cell " + x_move : ^45}')
+                print(f'{"AI places " + x.red() + " at cell " + x_move : ^45}')
             else:
-                x_move = input(f'Place X at the position({red}{available_moves}{reset}): ').lower()
+                x_move = input(f'Place X at the position({Paint(available_moves).red()}): ').lower()
                 if x_move not in available_moves or len(x_move) > 1:
                     print('Invalid position. Try again.')
                     continue
@@ -58,7 +53,7 @@ def main():
                 board_display(board)
                 game_over('x')
                 if won(board) == 2:
-                    print(f'{Fore.BLUE}{"DOUBLE WIN!!!" : ^37}{Style.RESET_ALL}')
+                    print(Paint(f'{"DOUBLE WIN!!!" : ^37}').cyan())
                     x_victories += 1
                 x_victories += 1
                 score_display(x_victories, o_victories)
@@ -89,9 +84,9 @@ def main():
         else:
             if ai == 'o':
                 o_move = ai_move(board, available_moves, 'O', 'X')
-                print(f'{"AI places " + o + " at cell " + o_move : ^45}')
+                print(f'{"AI places " + o.green() + " at cell " + o_move : ^45}')
             else:
-                o_move = input(f'Place O at the position({green}{available_moves}{reset}): ').lower()
+                o_move = input(f'Place O at the position({Paint(available_moves).green()}): ').lower()
                 if o_move not in available_moves or len(o_move) > 1:
                     print('Invalid position. Try again.')
                     continue
