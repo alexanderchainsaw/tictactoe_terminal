@@ -96,7 +96,7 @@ def main():
                 board_display(board)
                 game_over('o')
                 if won(board) == 2:
-                    print(f'{Fore.BLUE}{"DOUBLE WIN!!!" : ^37}{Style.RESET_ALL}')
+                    print(Paint(f'{"DOUBLE WIN!!!" : ^37}').cyan())
                     o_victories += 1
                 o_victories += 1
                 score_display(x_victories, o_victories)
