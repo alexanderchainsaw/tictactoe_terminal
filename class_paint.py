@@ -31,6 +31,3 @@ class Paint:
         """Paint object cyan."""
         return f"{self._cyan}{self.strng}{self.reset}"
 
-
-x = Paint('X')
-o = Paint('O')
