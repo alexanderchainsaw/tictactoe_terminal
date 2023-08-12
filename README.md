@@ -1,3 +1,4 @@
+## Reworked into a new implementation using OOP and with any size of the board at: https://github.com/alexanderchainsaw/tictactoe_with_scalable_board
 # <p align="center">Simple TicTacToe in the terminal</p>
 ![](https://github.com/alexanderchainsaw/demo_repo/blob/main/demo.gif)  
 Simple tictactoe with score tracking and enumerated cells.  
